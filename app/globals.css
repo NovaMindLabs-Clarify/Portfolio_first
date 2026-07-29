@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f1f2ef;
+  --graphite: #1b2430;
+  --grid: #d7dad4;
+  --tape: #f2c230;
+  --blueprint: #3457d5;
+
+  --step--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.94rem);
+  --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.13rem);
+  --step-1: clamp(1.25rem, 1.15rem + 0.5vw, 1.6rem);
+  --step-2: clamp(1.56rem, 1.35rem + 1.05vw, 2.44rem);
+  --step-3: clamp(1.95rem, 1.55rem + 2vw, 3.9rem);
+  --step-4: clamp(2.44rem, 1.7rem + 3.7vw, 6.5rem);
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-graphite: var(--graphite);
+  --color-grid: var(--grid);
+  --color-tape: var(--tape);
+  --color-blueprint: var(--blueprint);
+
+  --font-display: var(--font-geologica);
+  --font-sans: var(--font-golos-text);
+  --font-mono: var(--font-jetbrains-mono);
+
+  --text-step--1: var(--step--1);
+  --text-step-0: var(--step-0);
+  --text-step-1: var(--step-1);
+  --text-step-2: var(--step-2);
+  --text-step-3: var(--step-3);
+  --text-step-4: var(--step-4);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #12161c;
+    --graphite: #eef0f2;
+    --grid: #2a323f;
+    --blueprint: #6c8bff;
+  }
+}
+
+body {
+  background: var(--paper);
+  color: var(--graphite);
+  font-family: var(--font-sans), sans-serif;
+}

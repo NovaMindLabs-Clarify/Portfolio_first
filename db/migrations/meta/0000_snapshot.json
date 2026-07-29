@@ -1,0 +1,156 @@
+{
+  "id": "4740298e-700e-4c34-820b-9c09ea6fc40b",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.estimate_submissions": {
+      "name": "estimate_submissions",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "area": {
+          "name": "area",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "repair_type": {
+          "name": "repair_type",
+          "type": "repair_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "bathrooms": {
+          "name": "bathrooms",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "urgency": {
+          "name": "urgency",
+          "type": "urgency",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "layout_change": {
+          "name": "layout_change",
+          "type": "layout_change",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "materials_class": {
+          "name": "materials_class",
+          "type": "materials_class",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "estimate_low": {
+          "name": "estimate_low",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "estimate_high": {
+          "name": "estimate_high",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "phone": {
+          "name": "phone",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "crm_sync_status": {
+          "name": "crm_sync_status",
+          "type": "crm_sync_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'pending'"
+        },
+        "crm_sync_attempts": {
+          "name": "crm_sync_attempts",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.crm_sync_status": {
+      "name": "crm_sync_status",
+      "schema": "public",
+      "values": ["pending", "synced", "failed"]
+    },
+    "public.layout_change": {
+      "name": "layout_change",
+      "schema": "public",
+      "values": ["none", "partitions", "wetZones"]
+    },
+    "public.materials_class": {
+      "name": "materials_class",
+      "schema": "public",
+      "values": ["economy", "standard", "premium"]
+    },
+    "public.repair_type": {
+      "name": "repair_type",
+      "schema": "public",
+      "values": ["cosmetic", "capital", "designer"]
+    },
+    "public.urgency": {
+      "name": "urgency",
+      "schema": "public",
+      "values": ["normal", "accelerated", "urgent"]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
