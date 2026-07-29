@@ -4,10 +4,10 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import * as schema from "./schema";
 
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL is not set");
-}
-
-const queryClient = postgres(process.env.DATABASE_URL);
+// В Docker-сборке (Render и т.п.) переменные окружения доступны только в
+// рантайме контейнера, а не на этапе `docker build` — бросать здесь исключение
+// уронит саму сборку. postgres() не подключается eagerly, реальное соединение
+// произойдёт при первом запросе, когда DATABASE_URL уже точно будет на месте.
+const queryClient = postgres(process.env.DATABASE_URL ?? "postgres://placeholder");
 
 export const db = drizzle(queryClient, { schema });
