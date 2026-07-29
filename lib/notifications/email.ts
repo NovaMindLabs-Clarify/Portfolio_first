@@ -1,6 +1,7 @@
 import "server-only";
 
 import { Resend } from "resend";
+import { formatRub } from "@/lib/format";
 
 export interface EstimateEmailPayload {
   to: string;
@@ -8,10 +9,6 @@ export interface EstimateEmailPayload {
   low: number;
   high: number;
   pdfBuffer: Buffer;
-}
-
-function formatRub(value: number): string {
-  return `${value.toLocaleString("ru-RU")} ₽`;
 }
 
 /**

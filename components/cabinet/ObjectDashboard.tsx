@@ -7,6 +7,7 @@ import type {
   Photo,
   Stage,
 } from "@/db/schema";
+import { formatDateRu, formatRub } from "@/lib/format";
 import { ChatSection } from "./ChatSection";
 import { ChecklistSection } from "./ChecklistSection";
 
@@ -27,16 +28,8 @@ const STAGE_STATUS_LABEL: Record<Stage["status"], string> = {
   done: "Завершён",
 };
 
-function formatRub(value: number): string {
-  return `${value.toLocaleString("ru-RU")} ₽`;
-}
-
 function formatDate(date: Date): string {
-  return new Date(date).toLocaleDateString("ru-RU", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-  });
+  return formatDateRu(new Date(date));
 }
 
 export function ObjectDashboard({

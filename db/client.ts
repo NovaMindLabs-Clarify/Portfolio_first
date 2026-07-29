@@ -8,6 +8,8 @@ import * as schema from "./schema";
 // рантайме контейнера, а не на этапе `docker build` — бросать здесь исключение
 // уронит саму сборку. postgres() не подключается eagerly, реальное соединение
 // произойдёт при первом запросе, когда DATABASE_URL уже точно будет на месте.
-const queryClient = postgres(process.env.DATABASE_URL ?? "postgres://placeholder");
+const queryClient = postgres(
+  process.env.DATABASE_URL ?? "postgres://placeholder",
+);
 
 export const db = drizzle(queryClient, { schema });

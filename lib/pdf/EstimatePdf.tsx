@@ -1,4 +1,5 @@
 import { Document, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
+import { formatDateRu, formatRub } from "@/lib/format";
 import type { EstimateInput } from "@/lib/schemas/estimate";
 
 export interface EstimatePdfProps {
@@ -91,16 +92,8 @@ const styles = StyleSheet.create({
   },
 });
 
-function formatRub(value: number): string {
-  return `${value.toLocaleString("ru-RU")} ₽`;
-}
-
 function formatDate(date: Date): string {
-  return date.toLocaleDateString("ru-RU", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-  });
+  return formatDateRu(date);
 }
 
 export function EstimatePdf({

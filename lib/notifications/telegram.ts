@@ -1,5 +1,6 @@
 import "server-only";
 
+import { formatRub } from "@/lib/format";
 import type { EstimateInput } from "@/lib/schemas/estimate";
 
 const REPAIR_TYPE_LABEL: Record<EstimateInput["repairType"], string> = {
@@ -40,7 +41,7 @@ export async function notifyManagerInTelegram(
     `Площадь: ${lead.input.area} м²`,
     `Тип ремонта: ${REPAIR_TYPE_LABEL[lead.input.repairType]}`,
     `Санузлы: ${lead.input.bathrooms}`,
-    `Вилка: ${lead.low.toLocaleString("ru-RU")} — ${lead.high.toLocaleString("ru-RU")} ₽`,
+    `Вилка: ${formatRub(lead.low)} — ${formatRub(lead.high)}`,
   ]
     .filter(Boolean)
     .join("\n");

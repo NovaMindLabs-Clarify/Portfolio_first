@@ -2,12 +2,9 @@
 
 import { animate, motion, useMotionValue, useTransform } from "motion/react";
 import { useEffect } from "react";
+import { formatRub } from "@/lib/format";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
-
-function formatRub(value: number): string {
-  return `${Math.round(value).toLocaleString("ru-RU")} ₽`;
-}
 
 export function TickerNumber({ value }: { value: number }) {
   const motionValue = useMotionValue(value);

@@ -3,14 +3,10 @@
 import { useId, useRef, useTransition } from "react";
 import type { Message } from "@/db/schema";
 import { postMessage } from "@/lib/actions/cabinet";
+import { formatDateTimeRu } from "@/lib/format";
 
 function formatDateTime(date: Date): string {
-  return new Date(date).toLocaleString("ru-RU", {
-    day: "2-digit",
-    month: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  return formatDateTimeRu(new Date(date));
 }
 
 export function ChatSection({
