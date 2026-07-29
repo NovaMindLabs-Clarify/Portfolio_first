@@ -14,7 +14,7 @@ import {
 } from "@/db/schema";
 
 export const metadata: Metadata = {
-  title: "Демо личного кабинета — КОНТУР",
+  title: "Демо личного кабинета",
   robots: { index: false, follow: false },
 };
 

@@ -9,7 +9,7 @@ import { objects } from "@/db/schema";
 import { auth } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: "Личный кабинет — КОНТУР",
+  title: "Личный кабинет",
   robots: { index: false, follow: false },
 };
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geologica, Golos_Text, JetBrains_Mono } from "next/font/google";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const geologica = Geologica({
@@ -22,9 +23,31 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "КОНТУР — ремонт под ключ",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${SITE_NAME} — ремонт под ключ`,
+    template: `%s — ${SITE_NAME}`,
+  },
   description:
-    "Студия ремонта под ключ с калькулятором сметы и личным кабинетом объекта.",
+    "Студия ремонта под ключ с калькулятором сметы и личным кабинетом объекта. Концепт-проект для портфолио.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "ru_RU",
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} — ремонт под ключ`,
+    description:
+      "Калькулятор сметы и личный кабинет объекта. Концепт-проект для портфолио.",
+    url: SITE_URL,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} — ремонт под ключ`,
+    description:
+      "Калькулятор сметы и личный кабинет объекта. Концепт-проект для портфолио.",
+  },
 };
 
 export default function RootLayout({

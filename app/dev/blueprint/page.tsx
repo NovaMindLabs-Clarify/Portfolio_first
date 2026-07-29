@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { BlueprintPlayground } from "./BlueprintPlayground";
 
 export const metadata: Metadata = {
-  title: "Blueprint playground — dev",
+  title: "Blueprint playground (dev)",
   robots: { index: false, follow: false },
 };
 
