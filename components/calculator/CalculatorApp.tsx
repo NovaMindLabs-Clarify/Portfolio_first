@@ -92,7 +92,7 @@ export function CalculatorApp() {
   }, [watch, setValue]);
 
   useEffect(() => {
-    stepFieldRef.current?.focus();
+    stepFieldRef.current?.focus({ preventScroll: true });
   }, []);
 
   const result = useMemo(() => calculateEstimate(preview), [preview]);
@@ -101,21 +101,39 @@ export function CalculatorApp() {
   const goTo = (next: number) => {
     setStep(next);
     // Фокус на первое поле нового шага переносим после перерисовки, когда
-    // ref уже привязан к полю именно этого шага.
-    requestAnimationFrame(() => stepFieldRef.current?.focus());
+    // ref уже привязан к полю именно этого шага. preventScroll — иначе браузер
+    // сам скроллит к полю и заголовок шага уезжает за верх экрана; вместо
+    // этого явно подводим fieldset (начинается с заголовка) к верху вьюпорта.
+    requestAnimationFrame(() => {
+      stepFieldRef.current?.focus({ preventScroll: true });
+      stepFieldRef.current
+        ?.closest("fieldset")
+        ?.scrollIntoView({ block: "start", behavior: "smooth" });
+    });
   };
 
   return (
     <FormProvider {...methods}>
       <div className="flex flex-col gap-10 px-6 py-10 sm:px-10">
-        <ol className="flex flex-wrap gap-4 font-mono text-step--1 text-graphite/60">
+        <h1 className="font-display text-step-3 font-semibold">
+          Калькулятор сметы
+        </h1>
+
+        <ol className="flex flex-wrap gap-4 font-mono text-step--1 text-graphite/70">
           {STEPS.map((s, i) => (
-            <li
-              key={s.number}
-              aria-current={i === step ? "step" : undefined}
-              className={i === step ? "text-blueprint" : undefined}
-            >
-              {s.number} {s.title}
+            <li key={s.number} aria-current={i === step ? "step" : undefined}>
+              <span
+                className={
+                  i === step ? "bg-tape px-1 text-ink-on-tape" : "text-graphite/70"
+                }
+              >
+                {s.number}
+              </span>{" "}
+              <span
+                className={i === step ? "text-graphite" : "text-graphite/70"}
+              >
+                {s.title}
+              </span>
             </li>
           ))}
         </ol>

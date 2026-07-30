@@ -2,6 +2,7 @@
 
 import { useFormContext } from "react-hook-form";
 import type { EstimateInput } from "@/lib/schemas/estimate";
+import { sliderProgressStyle } from "@/lib/sliderStyle";
 
 const LAYOUT_OPTIONS: {
   value: EstimateInput["layoutChange"];
@@ -47,7 +48,8 @@ export function StepBathroomsLayout({
             })
           }
           aria-valuetext={`${bathrooms} санузлов`}
-          className="accent-blueprint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blueprint"
+          className="kontur-slider"
+          style={sliderProgressStyle(bathrooms, 1, 5)}
         />
         <output className="font-mono text-step-0">{bathrooms}</output>
       </div>
@@ -64,7 +66,7 @@ export function StepBathroomsLayout({
               ref={layoutRegisterRef}
               type="radio"
               value={option.value}
-              className="h-5 w-5 accent-blueprint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blueprint"
+              className="kontur-radio"
             />
             {option.label}
           </label>

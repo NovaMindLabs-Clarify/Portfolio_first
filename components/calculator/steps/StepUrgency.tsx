@@ -50,7 +50,7 @@ export function StepUrgency({
               }}
               type="radio"
               value={option.value}
-              className="mt-1 h-5 w-5 accent-blueprint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blueprint"
+              className="kontur-radio mt-1"
             />
             <span className="flex flex-col">
               <span className="text-step-0 font-medium">{option.label}</span>

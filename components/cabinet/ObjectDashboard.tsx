@@ -87,7 +87,7 @@ export function ObjectDashboard({
                 {String(stage.number).padStart(2, "0")}
               </span>
               <span className="text-step--1 font-medium">{stage.title}</span>
-              <span className="text-step--1 text-graphite/60">
+              <span className="text-step--1 text-graphite/70">
                 {STAGE_STATUS_LABEL[stage.status]}
               </span>
             </li>
@@ -107,7 +107,7 @@ export function ObjectDashboard({
                 className="aspect-[4/3] w-full object-cover"
                 loading="lazy"
               />
-              <span className="text-step--1 text-graphite/60">
+              <span className="text-step--1 text-graphite/70">
                 {formatDate(photo.takenAt)}
               </span>
             </li>
@@ -120,39 +120,46 @@ export function ObjectDashboard({
         <p className="font-mono text-step-2">
           {estimate ? formatRub(estimate.amount) : "—"}
         </p>
-        <table className="w-full text-step--1">
-          <caption className="sr-only">История изменений сметы</caption>
-          <thead>
-            <tr className="border-b border-grid text-left text-graphite/60">
-              <th scope="col" className="py-2 pr-4 font-normal">
-                Дата
-              </th>
-              <th scope="col" className="py-2 pr-4 font-normal">
-                Изменение
-              </th>
-              <th scope="col" className="py-2 pr-4 font-normal">
-                Причина
-              </th>
-              <th scope="col" className="py-2 font-normal">
-                Согласовал
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {estimateChanges.map((change) => (
-              <tr key={change.id} className="border-b border-grid">
-                <td className="py-2 pr-4 font-mono">
-                  {formatDate(change.createdAt)}
-                </td>
-                <td className="py-2 pr-4 font-mono">
-                  +{formatRub(change.delta)}
-                </td>
-                <td className="py-2 pr-4">{change.reason}</td>
-                <td className="py-2">{change.approvedBy}</td>
+        <div
+          className="overflow-x-auto"
+          tabIndex={0}
+          role="region"
+          aria-label="История изменений сметы"
+        >
+          <table className="w-full min-w-[480px] text-step--1">
+            <caption className="sr-only">История изменений сметы</caption>
+            <thead>
+              <tr className="border-b border-grid text-left text-graphite/70">
+                <th scope="col" className="py-2 pr-4 font-normal">
+                  Дата
+                </th>
+                <th scope="col" className="py-2 pr-4 font-normal">
+                  Изменение
+                </th>
+                <th scope="col" className="py-2 pr-4 font-normal">
+                  Причина
+                </th>
+                <th scope="col" className="py-2 font-normal">
+                  Согласовал
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {estimateChanges.map((change) => (
+                <tr key={change.id} className="border-b border-grid">
+                  <td className="py-2 pr-4 font-mono">
+                    {formatDate(change.createdAt)}
+                  </td>
+                  <td className="py-2 pr-4 font-mono">
+                    +{formatRub(change.delta)}
+                  </td>
+                  <td className="py-2 pr-4">{change.reason}</td>
+                  <td className="py-2">{change.approvedBy}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <ChecklistSection

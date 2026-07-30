@@ -36,7 +36,7 @@ export function ChatSection({
           >
             <p className="font-medium">{message.authorName}</p>
             <p className="mt-1">{message.body}</p>
-            <p className="mt-1 font-mono text-graphite/50">
+            <p className="mt-1 font-mono text-graphite/70">
               {formatDateTime(message.createdAt)}
             </p>
           </li>

@@ -33,7 +33,7 @@ export function ChecklistSection({
           />
           <span
             className={
-              item.checked ? "text-graphite/60 line-through" : undefined
+              item.checked ? "text-graphite/70 line-through" : undefined
             }
           >
             {item.label}

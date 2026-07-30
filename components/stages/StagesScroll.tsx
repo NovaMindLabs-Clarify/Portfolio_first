@@ -17,11 +17,11 @@ function StageMeta({ stage }: { stage: (typeof STAGES)[number] }) {
   return (
     <>
       <p className="font-mono text-step-1 text-blueprint">{stage.number}</p>
-      <h3 className="font-display text-step-2 font-semibold">{stage.title}</h3>
+      <h2 className="font-display text-step-2 font-semibold">{stage.title}</h2>
       <p className="max-w-prose text-step-0 text-graphite/80">
         {stage.description}
       </p>
-      <p className="text-step--1 text-graphite/60">
+      <p className="text-step--1 text-graphite/70">
         Срок: <span className="font-mono">{stage.days}</span> дней
       </p>
     </>

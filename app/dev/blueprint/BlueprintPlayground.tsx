@@ -3,6 +3,7 @@
 import { useId, useState } from "react";
 import { FloorPlan } from "@/components/blueprint/FloorPlan";
 import type { EstimateInput } from "@/lib/schemas/estimate";
+import { sliderProgressStyle } from "@/lib/sliderStyle";
 
 const LAYOUT_OPTIONS: {
   value: EstimateInput["layoutChange"];
@@ -52,7 +53,8 @@ export function BlueprintPlayground() {
               value={area}
               onChange={(e) => setArea(Number(e.target.value))}
               aria-valuetext={`${area} квадратных метров`}
-              className="accent-blueprint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blueprint"
+              className="kontur-slider"
+              style={sliderProgressStyle(area, 20, 300)}
             />
             <output htmlFor={areaId} className="font-mono text-step-0">
               {area} м²
@@ -72,7 +74,8 @@ export function BlueprintPlayground() {
               value={rooms}
               onChange={(e) => setRooms(Number(e.target.value))}
               aria-valuetext={`${rooms} комнат`}
-              className="accent-blueprint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blueprint"
+              className="kontur-slider"
+              style={sliderProgressStyle(rooms, 1, 6)}
             />
             <output htmlFor={roomsId} className="font-mono text-step-0">
               {rooms}
@@ -92,7 +95,8 @@ export function BlueprintPlayground() {
               value={bathrooms}
               onChange={(e) => setBathrooms(Number(e.target.value))}
               aria-valuetext={`${bathrooms} санузлов`}
-              className="accent-blueprint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blueprint"
+              className="kontur-slider"
+              style={sliderProgressStyle(bathrooms, 1, 5)}
             />
             <output htmlFor={bathroomsId} className="font-mono text-step-0">
               {bathrooms}
@@ -112,7 +116,7 @@ export function BlueprintPlayground() {
                   value={option.value}
                   checked={layoutChange === option.value}
                   onChange={() => setLayoutChange(option.value)}
-                  className="h-5 w-5 accent-blueprint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blueprint"
+                  className="kontur-radio"
                 />
                 {option.label}
               </label>

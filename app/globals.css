@@ -6,6 +6,10 @@
   --grid: #d7dad4;
   --tape: #f2c230;
   --blueprint: #3457d5;
+  /* --tape не меняется в тёмной теме, поэтому текст на нём тоже должен быть
+     зафиксирован — иначе --graphite становится светлым в dark mode и текст
+     на жёлтом фоне пропадает (контраст ~1.5:1). */
+  --ink-on-tape: #1b2430;
 
   --step--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.94rem);
   --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.13rem);
@@ -21,6 +25,7 @@
   --color-grid: var(--grid);
   --color-tape: var(--tape);
   --color-blueprint: var(--blueprint);
+  --color-ink-on-tape: var(--ink-on-tape);
 
   --font-display: var(--font-geologica);
   --font-sans: var(--font-golos-text);
@@ -47,4 +52,116 @@ body {
   background: var(--paper);
   color: var(--graphite);
   font-family: var(--font-sans), sans-serif;
+}
+
+/* Кастомные контролы — см. .claude/skills/kontur-design-system: трек 2px
+   var(--grid), заполнение var(--blueprint), ползунок — квадрат 20px с
+   рамкой графитом. Никогда не системный вид. */
+.kontur-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  border-radius: 0;
+  background: linear-gradient(
+    to right,
+    var(--blueprint) 0%,
+    var(--blueprint) var(--range-progress, 0%),
+    var(--grid) var(--range-progress, 0%),
+    var(--grid) 100%
+  );
+}
+
+.kontur-slider::-webkit-slider-runnable-track {
+  height: 2px;
+  background: transparent;
+}
+
+.kontur-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: -9px;
+  background: var(--paper);
+  border: 2px solid var(--graphite);
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.kontur-slider::-moz-range-track {
+  height: 2px;
+  background: transparent;
+}
+
+.kontur-slider::-moz-range-progress {
+  height: 2px;
+  background: var(--blueprint);
+}
+
+.kontur-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--paper);
+  border: 2px solid var(--graphite);
+  border-radius: 0;
+  cursor: pointer;
+}
+
+/* Радио — квадратный чекбокс с галочкой, не круг. */
+.kontur-radio {
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--graphite);
+  border-radius: 0;
+  background: var(--paper);
+  cursor: pointer;
+}
+
+.kontur-radio:checked {
+  background: var(--blueprint);
+  border-color: var(--blueprint);
+}
+
+.kontur-radio:checked::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 6px;
+  height: 11px;
+  border-style: solid;
+  border-color: var(--paper);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.kontur-slider:focus-visible,
+.kontur-radio:focus-visible {
+  outline: 2px solid var(--blueprint);
+  outline-offset: 3px;
+}
+
+@keyframes kontur-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.kontur-loading-dot {
+  animation: kontur-pulse 1.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kontur-loading-dot {
+    animation: none;
+    opacity: 0.7;
+  }
 }

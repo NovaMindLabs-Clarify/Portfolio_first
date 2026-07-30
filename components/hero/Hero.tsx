@@ -26,7 +26,7 @@ export function Hero() {
           <Link
             data-hero-cta
             href="/calculator"
-            className="inline-flex min-h-11 items-center justify-center bg-graphite px-6 py-3 text-step-0 text-paper transition-colors duration-300 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] hover:bg-graphite/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blueprint"
+            className="inline-flex min-h-11 items-center justify-center bg-tape px-6 py-3 text-step-0 text-ink-on-tape transition-colors duration-300 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] hover:bg-tape/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blueprint"
           >
             Рассчитать смету →
           </Link>

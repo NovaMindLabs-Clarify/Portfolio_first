@@ -2,6 +2,7 @@
 
 import { useFormContext } from "react-hook-form";
 import type { EstimateInput } from "@/lib/schemas/estimate";
+import { sliderProgressStyle } from "@/lib/sliderStyle";
 
 export function StepArea({
   firstFieldRef,
@@ -25,8 +26,12 @@ export function StepArea({
         Площадь
       </legend>
 
+      <label htmlFor="area-slider" className="sr-only">
+        Площадь
+      </label>
       <input
         ref={firstFieldRef}
+        id="area-slider"
         type="range"
         min={20}
         max={300}
@@ -34,7 +39,8 @@ export function StepArea({
         value={area}
         onChange={(e) => onChange(Number(e.target.value))}
         aria-valuetext={`${area} квадратных метров`}
-        className="accent-blueprint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blueprint"
+        className="kontur-slider"
+        style={sliderProgressStyle(area, 20, 300)}
       />
 
       <label className="flex items-center gap-3 text-step-0">

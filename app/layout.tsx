@@ -8,6 +8,11 @@ const geologica = Geologica({
   variable: "--font-geologica",
   subsets: ["cyrillic", "latin"],
   weight: ["500", "700"],
+  // H1 в Hero — крупнейший текст на сайте (до 6.5rem): даже небольшое
+  // расхождение метрик fallback-шрифта на такой площади даёт заметный CLS.
+  // "optional" не переключает на веб-шрифт после первой отрисовки — сдвига
+  // layout нет вовсе, ценой редкого показа fallback-начертания на медленной сети.
+  display: "optional",
 });
 
 const golosText = Golos_Text({
