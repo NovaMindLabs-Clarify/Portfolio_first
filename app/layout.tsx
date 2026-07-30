@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geologica, Golos_Text, JetBrains_Mono } from "next/font/google";
+import { Header } from "@/components/layout/Header";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
@@ -66,7 +67,10 @@ export default function RootLayout({
       className={`${geologica.variable} ${golosText.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <SmoothScroll>{children}</SmoothScroll>
+        <SmoothScroll>
+          <Header />
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );

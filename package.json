@@ -33,7 +33,6 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.12.1",
     "@biomejs/biome": "^2.5.6",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
@@ -42,7 +41,6 @@
     "drizzle-kit": "^0.31.10",
     "eslint": "^9",
     "eslint-config-next": "16.2.12",
-    "lighthouse": "^13.4.1",
     "playwright": "^1.62.0",
     "tailwindcss": "^4",
     "tsx": "^4.23.1",
