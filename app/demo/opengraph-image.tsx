@@ -4,6 +4,10 @@ import { db } from "@/db/client";
 import { estimates, objects, stages } from "@/db/schema";
 import { formatRub } from "@/lib/format";
 
+// Читает из БД — без этого Next пытается сгенерировать картинку статически
+// при сборке, когда БД ещё недоступна (ровно как и сама /demo/page.tsx).
+export const dynamic = "force-dynamic";
+
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
